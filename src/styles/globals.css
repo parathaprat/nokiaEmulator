@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Reset and Global Styles */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    height: 100%;
+  }
+
+  body {
+    font-family: 'Courier New', monospace;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #f0f0f0;
+    overflow: hidden;
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+  }
+
+  button:focus-visible {
+    outline: 3px solid #4a9eff;
+    outline-offset: 3px;
+  }
+
+  /* Ensure all interactive elements have visible focus indicators */
+  a:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 3px solid #4a9eff;
+    outline-offset: 2px;
+  }
+}
+
+/* PhoneShell Component Styles */
+@layer components {
+  .phone-shell-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .phone-shell {
+    width: 260px;
+    height: 540px;
+    background: linear-gradient(135deg, #c5d5e4 0%, #a8b8c8 100%);
+    border-radius: 24px;
+    box-shadow: 
+      0 10px 30px rgba(0, 0, 0, 0.3),
+      0 5px 15px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3),
+      inset 0 -2px 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid #8a9aa8;
+    display: grid;
+    grid-template-rows: 200px 1fr;
+    padding: 20px 15px;
+    gap: 10px;
+    position: relative;
+  }
+
+  /* Responsive scaling for smaller viewports */
+  @media (max-width: 320px) {
+    .phone-shell {
+      transform: scale(0.85);
+      transform-origin: center;
+    }
+  }
+
+  @media (max-width: 280px) {
+    .phone-shell {
+      transform: scale(0.75);
+      transform-origin: center;
+    }
+  }
+
+  @media (max-height: 640px) {
+    .phone-shell {
+      transform: scale(0.8);
+      transform-origin: center;
+    }
+  }
+
+  @media (max-height: 560px) {
+    .phone-shell {
+      transform: scale(0.7);
+      transform-origin: center;
+    }
+  }
+
+  /* Combined small screen and height */
+  @media (max-width: 320px) and (max-height: 640px) {
+    .phone-shell {
+      transform: scale(0.7);
+      transform-origin: center;
+    }
+  }
+
+  @media (max-width: 280px) and (max-height: 560px) {
+    .phone-shell {
+      transform: scale(0.6);
+      transform-origin: center;
+    }
+  }
+
+  /* Landscape mobile devices */
+  @media (max-height: 480px) and (orientation: landscape) {
+    .phone-shell {
+      transform: scale(0.65);
+      transform-origin: center;
+    }
+  }
+
+
+}
+
+/* Screen Transition Animations */
+@layer components {
+  /* Fade-in animation for screen content changes */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Apply smooth transitions to screen content */
+  .nokia-screen-content {
+    animation: fadeIn 0.2s ease-in-out;
+  }
+
+  /* Smooth transitions for app changes */
+  .app-transition {
+    animation: slideIn 0.25s ease-out;
+  }
+}
+
+/* Utility Classes */
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Smooth transitions for interactive elements */
+  .transition-smooth {
+    transition: all 0.2s ease-in-out;
+  }
+}
