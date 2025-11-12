@@ -3,12 +3,14 @@ import type { NokiaAppProps } from '../../types/app.types';
 import { useSnakeGame } from './useSnakeGame';
 import type { Position } from './snakeTypes';
 import { loadState, saveState } from '../../core/storage';
+import { useInput } from '../../core/InputContext';
+import type { NokiaKeyAction } from '../../types/input.types';
 
 export const SnakeApp: React.FC<NokiaAppProps> = ({
-  onKey,
   setSoftkeys,
   goBack,
 }) => {
+  const { registerKeyHandler, unregisterKeyHandler } = useInput();
   const { gameState, resetGame, togglePause, changeDirection } = useSnakeGame();
   const [highScore, setHighScore] = useState<number>(() => {
     return loadState('snake.highScore', 0);
@@ -24,7 +26,7 @@ export const SnakeApp: React.FC<NokiaAppProps> = ({
 
   // Register key handler
   useEffect(() => {
-    const handleKey = (action: string) => {
+    const handleKey = (action: NokiaKeyAction) => {
       if (gameState.gameStatus === 'gameOver') {
         // Handle game over screen keys
         switch (action) {
@@ -60,8 +62,12 @@ export const SnakeApp: React.FC<NokiaAppProps> = ({
       }
     };
 
-    onKey(handleKey as any);
-  }, [onKey, changeDirection, togglePause, goBack, gameState.gameStatus, resetGame]);
+    registerKeyHandler(handleKey);
+
+    return () => {
+      unregisterKeyHandler(handleKey);
+    };
+  }, [registerKeyHandler, unregisterKeyHandler, changeDirection, togglePause, goBack, gameState.gameStatus, resetGame]);
 
   // Set softkeys based on game status
   useEffect(() => {
