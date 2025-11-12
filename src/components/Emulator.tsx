@@ -40,10 +40,6 @@ const EmulatorContent: React.FC = () => {
 
     return (
       <AppComponent
-        onKey={(action: NokiaKeyAction) => {
-          // Apps can handle keys directly through this callback
-          console.log('App handling key:', action);
-        }}
         setSoftkeys={setSoftkeys}
         openApp={openApp}
         goBack={goBack}

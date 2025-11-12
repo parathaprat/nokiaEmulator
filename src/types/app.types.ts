@@ -1,10 +1,7 @@
-import type { NokiaKeyAction } from './input.types';
-
 /**
  * Props interface that all Nokia apps must implement
  */
 export interface NokiaAppProps {
-  onKey: (action: NokiaKeyAction) => void;
   setSoftkeys: (left?: string, right?: string) => void;
   openApp: (appId: string) => void;
   goBack: () => void;
