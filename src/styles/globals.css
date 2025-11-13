@@ -69,10 +69,11 @@
       inset 0 -2px 5px rgba(0, 0, 0, 0.1);
     border: 2px solid #8a9aa8;
     display: grid;
-    grid-template-rows: 200px 1fr;
-    padding: 20px 15px;
-    gap: 10px;
+    grid-template-rows: 180px 1fr;
+    padding: 15px 12px;
+    gap: 8px;
     position: relative;
+    overflow: hidden;
   }
 
   /* Responsive scaling for smaller viewports */
@@ -161,6 +162,15 @@
   /* Smooth transitions for app changes */
   .app-transition {
     animation: slideIn 0.25s ease-out;
+  }
+
+  /* Keypad container constraints */
+  .keypad-container {
+    min-height: 0;
+    max-height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
 }
 

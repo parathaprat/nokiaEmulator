@@ -11,9 +11,9 @@ const KeypadComponent: React.FC<KeypadProps> = ({ onKeyPress }) => {
   };
 
   return (
-    <div className="keypad-container p-2 flex flex-col gap-2">
+    <div className="keypad-container p-1 flex flex-col gap-1.5" style={{ minHeight: 0, overflow: 'hidden' }}>
       {/* Directional Pad */}
-      <div className="directional-pad grid grid-cols-3 grid-rows-3 gap-1 w-24 mx-auto">
+      <div className="directional-pad grid grid-cols-3 grid-rows-3 gap-1 w-20 mx-auto">
         <div className="col-start-2">
           <button
             className="keypad-btn directional-btn"
@@ -62,7 +62,7 @@ const KeypadComponent: React.FC<KeypadProps> = ({ onKeyPress }) => {
       </div>
 
       {/* Numeric Keypad */}
-      <div className="numeric-pad grid grid-cols-3 gap-1.5 w-40 mx-auto">
+      <div className="numeric-pad grid grid-cols-3 gap-1 w-36 mx-auto">
         <button
           className="keypad-btn numeric-btn"
           onClick={() => handleButtonClick('DIGIT_1')}
@@ -150,7 +150,7 @@ const KeypadComponent: React.FC<KeypadProps> = ({ onKeyPress }) => {
       </div>
 
       {/* Function Buttons */}
-      <div className="function-buttons flex justify-center gap-3 mt-1">
+      <div className="function-buttons flex justify-center gap-2 mt-0.5">
         <button
           className="keypad-btn function-btn call-btn"
           onClick={() => handleButtonClick('CALL')}
@@ -210,34 +210,34 @@ const KeypadComponent: React.FC<KeypadProps> = ({ onKeyPress }) => {
 
         .directional-btn,
         .select-btn {
-          width: 28px;
-          height: 28px;
-          font-size: 14px;
+          width: 24px;
+          height: 24px;
+          font-size: 12px;
         }
 
         .select-btn {
           background: linear-gradient(145deg, #d0d0d0, #b0b0b0);
-          font-size: 18px;
+          font-size: 16px;
         }
 
         .numeric-btn {
-          width: 48px;
-          height: 48px;
-          font-size: 18px;
+          width: 40px;
+          height: 40px;
+          font-size: 16px;
           line-height: 1;
         }
 
         .sub-text {
-          font-size: 8px;
+          font-size: 7px;
           color: #666;
-          margin-top: 2px;
+          margin-top: 1px;
           font-weight: 400;
         }
 
         .function-btn {
-          width: 42px;
-          height: 42px;
-          font-size: 16px;
+          width: 36px;
+          height: 36px;
+          font-size: 14px;
         }
 
         .call-btn {
@@ -257,7 +257,7 @@ const KeypadComponent: React.FC<KeypadProps> = ({ onKeyPress }) => {
         }
 
         .clear-btn {
-          font-size: 20px;
+          font-size: 18px;
           font-weight: 700;
         }
       `}</style>

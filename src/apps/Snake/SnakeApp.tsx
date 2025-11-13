@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import type { NokiaAppProps } from '../../types/app.types';
 import { useSnakeGame } from './useSnakeGame';
 import type { Position } from './snakeTypes';
